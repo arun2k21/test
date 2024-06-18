@@ -326,7 +326,7 @@ ZOHO.CREATOR.init()
    const apiTest = async () => {
     const tr = document.querySelectorAll(".table-row");
     let promises = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 10; i++) {
         config = {
             appName : "smart-joules-app",
         reportName : "All_Maintanance_Task_Db"
