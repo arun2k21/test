@@ -4,17 +4,10 @@ ZOHO.CREATOR.init()
         //   
         var queryParams = ZOHO.CREATOR.UTIL.getQueryParams();
         var maintenance_id = queryParams.maintenance_id;
-        const monthString = (int) => {
-            const months = [
-                "January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
-            ];
-            return months[int].substring(0, 3);
-        }
 
         const createTable = async (start_date, end_date, site, area) => {
 
-            let conditional_criteria = `Task_Name != "Measure Air Flow" && Task_Name != "Expense Inccurred" && Task_Name != "Inventory Consumption"`;
+            let conditional_criteria = `Task_Name != "Measure Air Flow" && Task_Name != "Expense Inccurred" && Task_Name != "Measure the Coil Temperature"`;
             if (queryParams.maintenance_id) {
                 conditional_criteria += ` && Maintenance_ID == ${maintenance_id}`;
                 conditional_criteria += (start_date) ? ` && Date_field == "${start_date} 00:00:00"` : "";
@@ -330,7 +323,9 @@ ZOHO.CREATOR.init()
         canva();
 
 
-
+   const apiTest = async () => {
+    const tr = document.querySelectorAll(".table-row")
+   }
 
         const addRecord = async () => {
             const tr = document.querySelectorAll(".table-row");
