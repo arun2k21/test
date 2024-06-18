@@ -325,11 +325,15 @@ ZOHO.CREATOR.init()
 
    const apiTest = async () => {
     const tr = document.querySelectorAll(".table-row");
-    config = {
-        appName : "smart-joules-app",
-    reportName : "All_Maintanance_Task_Db"
-}
-return ZOHO.CREATOR.API.getAllRecords(config);
+    let promises = [];
+    for (let i = 0; i < 4; i++) {
+        config = {
+            appName : "smart-joules-app",
+        reportName : "All_Maintanance_Task_Db"
+    }
+    promises.push(ZOHO.CREATOR.API.getAllRecords(config));
+    }
+    return Promise.all(promises);
    }
 
         const addRecord = async () => {
