@@ -1,51 +1,64 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
-.table thead th{
+
+.table thead th {
     font-size: 14px;
     color: #fff;
     z-index: 1;
 }
-.container-fluid{
+
+.container-fluid {
     height: 100vh;
     overflow: scroll;
 }
-.table tbody td{
+
+.table tbody td {
     font-size: 14px;
     font-weight: 500;
 }
-button{
+
+button {
     padding: 5px 20px !important;
 }
-.cursor-pointer{
+
+.cursor-pointer {
     cursor: pointer;
 }
-video{
+
+video {
     width: 320px;
     height: 240px;
 }
-.image-field{
+
+.image-field {
     width: 100px;
 }
-.image-field label:nth-child(1){
+
+.image-field label:nth-child(1) {
     font-size: 20px;
 }
+
 /* .image-field label i:nth-child(3){
     font-size: 12px;
 }  */
-input{
+input {
     border: 1px solid rgb(135, 134, 134) !important;
 }
-.form-control{
+
+.form-control {
     font-size: 12px !important;
     font-weight: 500 !important;
 }
-.dropdown-toggle{
+
+.dropdown-toggle {
     background: rgb(215, 214, 214) !important;
     width: 7em;
 }
-.submit-btn{
+
+.submit-btn {
     display: none;
 }
-.visible-btn{
+
+.visible-btn {
     display: visible;
 }
 
@@ -54,71 +67,83 @@ audio {
     width: 150px !important;
     z-index: -1;
 }
- ::file-selector-button {
+
+::file-selector-button {
     display: none;
-  }
-    #signature-pad {
-        
-        
-        width: 200;
-        height: 150;
-        cursor: crosshair;
-    }
-    .signature{
-        border: 1px solid rgb(135, 134, 134) !important;
-        border-radius: 5px;
-    }
-    small{
-        text-decoration: underline;
-    }
-    input[type="date"]{
-        border-radius: 5px;
-        font-size: 12px;
-        padding: 5px;
-    }
-    .img-form-control{
-        border-radius: 5px;
-        max-width: 150px;
-        height: 30px;
-        padding: 5px;
-    }
-    .img-tag{
-        max-width: 100px;
-        max-height: 100px;
-    }
-    .dropdown .dropdown-menu{
-        max-height: 300px;
-    }
-    .vid{
-        transform: rotate(0deg) !important;
-        height: 100%;
-        width: 100%;
-    }
-    .dropdown .dropdown-menu .dropdown-item{
-        cursor: pointer;
-    }
-    input[type="text"]{
-        min-width: 200px;
-    }
+}
 
-    .wrapper{
-        height: 100vh;
-        width: 100vw;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: none;
-    }
+#signature-pad {
 
-    iframe form[name="Maintenance_Task_Filter"].label-left{
-        width: 100% !important;
-    }
-    /* HTML: <div class="loader"></div> */
+
+    width: 200;
+    height: 150;
+    cursor: crosshair;
+}
+
+.signature {
+    border: 1px solid rgb(135, 134, 134) !important;
+    border-radius: 5px;
+}
+
+small {
+    text-decoration: underline;
+}
+
+input[type="date"] {
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.img-form-control {
+    border-radius: 5px;
+    max-width: 150px;
+    height: 30px;
+    padding: 5px;
+}
+
+.img-tag {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.dropdown .dropdown-menu {
+    max-height: 300px;
+}
+
+.vid {
+    transform: rotate(0deg) !important;
+    height: 100%;
+    width: 100%;
+}
+
+.dropdown .dropdown-menu .dropdown-item {
+    cursor: pointer;
+}
+
+input[type="text"] {
+    min-width: 200px;
+}
+
+.wrapper {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+iframe form[name="Maintenance_Task_Filter"].label-left {
+    width: 100% !important;
+}
+
+/* HTML: <div class="loader"></div> */
 .loader {
     height: 15px;
     aspect-ratio: 4;
-    --_g: no-repeat radial-gradient(farthest-side,#000 90%,#0000);
-    background: 
-      var(--_g) left, 
-      var(--_g) right;
+    --_g: no-repeat radial-gradient(farthest-side, #000 90%, #0000);
+    background:
+        var(--_g) left,
+        var(--_g) right;
     background-size: 25% 100%;
     display: grid;
     z-index: 100000;
@@ -126,9 +151,10 @@ audio {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-  .loader:before,
-  .loader:after {
+}
+
+.loader:before,
+.loader:after {
     content: "";
     height: inherit;
     aspect-ratio: 1;
@@ -138,20 +164,28 @@ audio {
     transform-origin: -100% 50%;
     background: #000;
     animation: l49 1s infinite linear;
-  }
-  .loader:after {
+}
+
+.loader:after {
     transform-origin: 200% 50%;
-    --s:-1;
+    --s: -1;
     animation-delay: -.5s;
-  }
-  .container-fluid .maintenance-table{
+}
+
+.container-fluid .maintenance-table {
     overflow-y: auto;
-  }
-  @keyframes l49 {
+}
+
+@keyframes l49 {
+
     58%,
-    100% {transform: rotate(calc(var(--s,1)*1turn))}
-  }
-  @media only screen and (orientation: landscape) {
+    100% {
+        transform: rotate(calc(var(--s, 1)*1turn))
+    }
+}
+
+@media only screen and (orientation: landscape) {
+
     /* Apply rotation for landscape orientation */
     video {
         transform: rotate(90deg);
@@ -159,55 +193,68 @@ audio {
 }
 
 @media only screen and (orientation: portrait) {
+
     /* Reset rotation for portrait orientation */
     video {
         transform: rotate(0deg);
     }
 }
-    @media(width < 724px){
-        .container-fluid{
-            height: 100vh;
-            overflow: scroll;
-        }
-        table thead th, table tbody td{
-            font-size: 10px !important;
-        }
-        #area-name{
-            font-size: 10px;
-        }
-        .bg-dark{
-            background-color: blue;
-        }
-        input[type="text"],
-        input[type="number"] {
-           min-width: 100px !important;
-           max-width: 100px !important;
-        }
-        .img-tag{
-            max-width: 50px;
-            max-height: 50px;
-        }
-        #select{
-            min-width: none !important;
-        }
-        table tbody td .form-select{
-            width: 100px !important;
-            font-size: 10px !important;
-        }
-        .complete-button{
-            font-size: 10px !important;
-            padding: 5px 10px !important;
-        }
-        .container-fluid .filter-group{
-            display: flex !important;
-            flex-direction: column !important;
-            column-gap: 5px !important;
-        }
-        
-        input[type="date"]{
-            width: 100% !important;
-        }
-        .btn{
-            width: 100%;
-        }
+
+@media(width < 724px) {
+    .container-fluid {
+        height: 100vh;
+        overflow: scroll;
     }
+
+    table thead th,
+    table tbody td {
+        font-size: 10px !important;
+    }
+
+    #area-name {
+        font-size: 10px;
+    }
+
+    .bg-dark {
+        background-color: blue;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+
+    .img-tag {
+        max-width: 50px;
+        max-height: 50px;
+    }
+
+    #select {
+        min-width: none !important;
+    }
+
+    table tbody td .form-select {
+        width: 100px !important;
+        font-size: 10px !important;
+    }
+
+    .complete-button {
+        font-size: 10px !important;
+        padding: 5px 10px !important;
+    }
+
+    .container-fluid .filter-group {
+        display: flex !important;
+        flex-direction: column !important;
+        column-gap: 5px !important;
+    }
+
+    input[type="date"] {
+        width: 100% !important;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
