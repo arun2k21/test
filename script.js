@@ -324,7 +324,12 @@ ZOHO.CREATOR.init()
 
 
    const apiTest = async () => {
-    const tr = document.querySelectorAll(".table-row")
+    const tr = document.querySelectorAll(".table-row");
+    config = {
+        appName : "smart-joules-app",
+    reportName : "All_Maintanance_Task_Db"
+}
+return ZOHO.CREATOR.API.getAllRecords(config);
    }
 
         const addRecord = async () => {
@@ -752,9 +757,10 @@ document.querySelector("#submit-btn").addEventListener("click", async () => {
     if (!imgMandate) {
         loaderStart();
         try {
-            
-            const addRecords = await addRecord();
-            console.log("Records Added:", addRecords);
+             const result = await apiTest();
+             console.log(result);
+            // const addRecords = await addRecord();
+            // console.log("Records Added:", addRecords);
 
             // const addImageResponse = await addImage();
             // console.log("Image Added:", addImageResponse);
