@@ -322,22 +322,6 @@ ZOHO.CREATOR.init()
         }
         canva();
 
-
-        const apiTest = async () => {
-            const tr = document.querySelectorAll(".table-row");
-            let promises = [];
-            for (let i = 0; i < 10; i++) {
-                config = {
-                    appName: "smart-joules-app",
-                    reportName: "All_Maintanance_Task_Db"
-                }
-                const resp = await ZOHO.CREATOR.API.getAllRecords(config);
-                promises.push(resp);
-            }
-            return promises;
-        
-        }
-
         const addRecord = async () => {
             const tr = document.querySelectorAll(".table-row");
             const promises = Array.from(tr).map(async (row, i) => {
@@ -386,15 +370,11 @@ ZOHO.CREATOR.init()
                     data: formData,
                 };
 
-                return ZOHO.CREATOR.API.updateRecord(config);
+                const updateResponse = await ZOHO.CREATOR.API.updateRecord(config);
+                promises.push(updateResponse);
             });
+            return promises;
 
-            try {
-                const results = await Promise.all(promises);
-                return results;
-            } catch (err) {
-                console.error('Error in addRecord:', err);
-            }
         };
 
 
@@ -763,10 +743,8 @@ ZOHO.CREATOR.init()
             if (!imgMandate) {
                 loaderStart();
                 try {
-                    const result = await apiTest();
-                    console.log(result);
-                    // const addRecords = await addRecord();
-                    // console.log("Records Added:", addRecords);
+                    const addRecords = await addRecord();
+                    console.log("Records Added:", addRecords);
 
                     // const addImageResponse = await addImage();
                     // console.log("Image Added:", addImageResponse);
