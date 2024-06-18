@@ -761,17 +761,17 @@ document.querySelector("#submit-btn").addEventListener("click", async () => {
             const addRecords = await addRecord();
             console.log("Records Added:", addRecords);
 
-            const addImageResponse = await addImage();
-            console.log("Image Added:", addImageResponse);
+            // const addImageResponse = await addImage();
+            // console.log("Image Added:", addImageResponse);
 
-            const addedUser = await submittedUser();
-            console.log("User Submitted:", addedUser);
+            // const addedUser = await submittedUser();
+            // console.log("User Submitted:", addedUser);
 
-            const countRecords = await count();
-            console.log("Count Records:", countRecords);
+            // const countRecords = await count();
+            // console.log("Count Records:", countRecords);
 
-            const addSign = await updateSignature();
-            console.log("Signature Added:", addSign);
+            // const addSign = await updateSignature();
+            // console.log("Signature Added:", addSign);
             
             loaderEnd("Records Successfully Added!");
             // Moved here to indicate success
