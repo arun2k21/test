@@ -258,7 +258,7 @@ ZOHO.CREATOR.init()
             }
 
         }
-        createTable("01-Jun-2024","30-Jun-2024",null,"SJPL/F-06/CSU-034/ Pre post OP");
+        createTable("01-Jun-2024", "30-Jun-2024", null, "SJPL/F-06/CSU-034/ Pre post OP");
 
         const queryFilter = () => {
             // const query_date = queryParams.date;
@@ -270,13 +270,13 @@ ZOHO.CREATOR.init()
             // if (query_date) {
             //     const start_date = query_date;
             //     const current_date = query_date;
-                // createTable(start_date, current_date);
+            // createTable(start_date, current_date);
             // }
             // else if (filter == "true") {
-                // createTable((query_start_date != "null" && query_end_date != "null") ? query_start_date : "", (query_start_date != "null" && query_end_date != "null") ? query_end_date : "", (site != "null") ? site : "", (area != "null") ? area : "");
+            // createTable((query_start_date != "null" && query_end_date != "null") ? query_start_date : "", (query_start_date != "null" && query_end_date != "null") ? query_end_date : "", (site != "null") ? site : "", (area != "null") ? area : "");
             // }
         }
-        
+
         queryFilter();
         const canva = () => {
             var canvas = document.querySelector("#signature-pad");
@@ -323,18 +323,20 @@ ZOHO.CREATOR.init()
         canva();
 
 
-   const apiTest = async () => {
-    const tr = document.querySelectorAll(".table-row");
-    let promises = [];
-    for (let i = 0; i < 10; i++) {
-        config = {
-            appName : "smart-joules-app",
-        reportName : "All_Maintanance_Task_Db"
-    }
-    promises.push(ZOHO.CREATOR.API.getAllRecords(config));
-    }
-    return Promise.all(promises);
-   }
+        const apiTest = async () => {
+            const tr = document.querySelectorAll(".table-row");
+            let promises = [];
+            for (let i = 0; i < 10; i++) {
+                config = {
+                    appName: "smart-joules-app",
+                    reportName: "All_Maintanance_Task_Db"
+                }
+                const resp = await ZOHO.CREATOR.API.getAllRecords(config);
+                promises.push(resp);
+            }
+            return promises;
+        
+        }
 
         const addRecord = async () => {
             const tr = document.querySelectorAll(".table-row");
@@ -576,8 +578,8 @@ ZOHO.CREATOR.init()
                     data: formData,
                 };
 
-              
-                    return ZOHO.CREATOR.API.updateRecord(config);
+
+                return ZOHO.CREATOR.API.updateRecord(config);
             });
 
             try {
@@ -687,8 +689,8 @@ ZOHO.CREATOR.init()
                     file: img_url || null,
                 };
 
-                
-                    return ZOHO.CREATOR.API.uploadFile(config);
+
+                return ZOHO.CREATOR.API.uploadFile(config);
             });
 
             return Promise.all(promises).catch(err => {
@@ -699,93 +701,93 @@ ZOHO.CREATOR.init()
 
 
         // Function to start the loader
-const loaderStart = () => {
-    const wrapper = document.getElementsByClassName("wrapper")[0];
-    if (wrapper) wrapper.style.display = "block";
-    document.body.style.overflow = "hidden"; 
-};
+        const loaderStart = () => {
+            const wrapper = document.getElementsByClassName("wrapper")[0];
+            if (wrapper) wrapper.style.display = "block";
+            document.body.style.overflow = "hidden";
+        };
 
-// Function to stop the loader and show a modal alert with a message
-const loaderEnd = (msg) => {
-    const wrapper = document.getElementsByClassName("wrapper")[0];
-    if (wrapper) wrapper.style.display = "none";
-    document.body.style.overflow = "auto";
-    
-    const modalAlert = document.querySelector("#img-mand-alert");
-    if (modalAlert) {
-        modalAlert.querySelector(".modal-title").textContent = "";
-        modalAlert.querySelector(".modal-body").innerHTML = `<span class="fw-bold">${msg}</span>`;
-        $('#img-mand-alert').modal('show'); // Assuming jQuery is being used
-    }
-};
+        // Function to stop the loader and show a modal alert with a message
+        const loaderEnd = (msg) => {
+            const wrapper = document.getElementsByClassName("wrapper")[0];
+            if (wrapper) wrapper.style.display = "none";
+            document.body.style.overflow = "auto";
 
-// Function to check mandatory image uploads
-const checkMandatory = () => {
-    const trArr = document.querySelector("tbody").children;
-    let j = -1;
-    let x = 0;
-    const taskArr = [];
-
-    Array.from(trArr).forEach((row, i) => {
-        if (i === 0) return; // Skip the first row if it's a header
-
-        j++;
-        const imgMandat = row.querySelector(".img-man").textContent;
-        const checkImg2 = document.getElementById(`img_prev${j}`);
-        console.log(imgMandat, checkImg2.src);
-
-        if (imgMandat === "true" || imgMandat === true) {
-            if (checkImg2.src.includes("creatorapp.zoho.in")) {
-                const taskName = row.querySelector("td:nth-child(3)").textContent;
-                taskArr.push(taskName);
-                x++;
+            const modalAlert = document.querySelector("#img-mand-alert");
+            if (modalAlert) {
+                modalAlert.querySelector(".modal-title").textContent = "";
+                modalAlert.querySelector(".modal-body").innerHTML = `<span class="fw-bold">${msg}</span>`;
+                $('#img-mand-alert').modal('show'); // Assuming jQuery is being used
             }
-        }
-    });
+        };
 
-    if (x > 0) {
-        const modalAlert = document.querySelector("#img-mand-alert");
-        if (modalAlert) {
-            modalAlert.querySelector(".modal-body").innerHTML = `<span>${taskArr.join(', ')}</span><br><span>The above tasks are mandatory to upload images</span>`;
-            $('#img-mand-alert').modal('show'); // Assuming jQuery is being used
-        }
-        return true;
-    } else {
-        return false;
-    }
-};
+        // Function to check mandatory image uploads
+        const checkMandatory = () => {
+            const trArr = document.querySelector("tbody").children;
+            let j = -1;
+            let x = 0;
+            const taskArr = [];
 
-// Event listener for the submit button
-document.querySelector("#submit-btn").addEventListener("click", async () => {
-    const imgMandate = checkMandatory();
-    if (!imgMandate) {
-        loaderStart();
-        try {
-             const result = await apiTest();
-             console.log(result);
-            // const addRecords = await addRecord();
-            // console.log("Records Added:", addRecords);
+            Array.from(trArr).forEach((row, i) => {
+                if (i === 0) return; // Skip the first row if it's a header
 
-            // const addImageResponse = await addImage();
-            // console.log("Image Added:", addImageResponse);
+                j++;
+                const imgMandat = row.querySelector(".img-man").textContent;
+                const checkImg2 = document.getElementById(`img_prev${j}`);
+                console.log(imgMandat, checkImg2.src);
 
-            // const addedUser = await submittedUser();
-            // console.log("User Submitted:", addedUser);
+                if (imgMandat === "true" || imgMandat === true) {
+                    if (checkImg2.src.includes("creatorapp.zoho.in")) {
+                        const taskName = row.querySelector("td:nth-child(3)").textContent;
+                        taskArr.push(taskName);
+                        x++;
+                    }
+                }
+            });
 
-            // const countRecords = await count();
-            // console.log("Count Records:", countRecords);
+            if (x > 0) {
+                const modalAlert = document.querySelector("#img-mand-alert");
+                if (modalAlert) {
+                    modalAlert.querySelector(".modal-body").innerHTML = `<span>${taskArr.join(', ')}</span><br><span>The above tasks are mandatory to upload images</span>`;
+                    $('#img-mand-alert').modal('show'); // Assuming jQuery is being used
+                }
+                return true;
+            } else {
+                return false;
+            }
+        };
 
-            // const addSign = await updateSignature();
-            // console.log("Signature Added:", addSign);
-            
-            loaderEnd("Records Successfully Added!");
-            // Moved here to indicate success
+        // Event listener for the submit button
+        document.querySelector("#submit-btn").addEventListener("click", async () => {
+            const imgMandate = checkMandatory();
+            if (!imgMandate) {
+                loaderStart();
+                try {
+                    const result = await apiTest();
+                    console.log(result);
+                    // const addRecords = await addRecord();
+                    // console.log("Records Added:", addRecords);
 
-        } catch (err) {
-            loaderEnd(err); // Display error message in modal
-        } 
-    }
-});
+                    // const addImageResponse = await addImage();
+                    // console.log("Image Added:", addImageResponse);
+
+                    // const addedUser = await submittedUser();
+                    // console.log("User Submitted:", addedUser);
+
+                    // const countRecords = await count();
+                    // console.log("Count Records:", countRecords);
+
+                    // const addSign = await updateSignature();
+                    // console.log("Signature Added:", addSign);
+
+                    loaderEnd("Records Successfully Added!");
+                    // Moved here to indicate success
+
+                } catch (err) {
+                    loaderEnd(err); // Display error message in modal
+                }
+            }
+        });
 
 
         document.querySelector("#go-next").addEventListener("click", () => {
